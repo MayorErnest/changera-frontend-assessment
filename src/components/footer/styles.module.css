@@ -1,0 +1,68 @@
+.container > div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 2.4rem;
+    padding: 2.8125rem 0px;
+    border-top: 1px solid var(--gray-color-300);
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+    order: 2;
+    margin:  0 auto;
+    margin-top: 1.2rem;
+}
+
+.logo-container svg {
+    fill: var(--gray-color-200)
+}
+
+.container span {
+    color: var(--gray-color-200);
+    font-size: 0.75rem;
+    margin-left: .5rem;
+}
+
+.container ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0px auto;
+}
+
+.container li {
+    margin-right: 1rem;
+    color: var(--blue-color);
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.container li:hover {
+    text-decoration: underline;
+}
+
+/* media queries */
+
+/* large tablet */
+@media (min-width: 940px) {
+    .logo-container {
+        order: 0;
+        margin:  0px;
+         margin-top: 0px;
+    }
+
+    .container ul {
+        margin: 0px 0px 0px 4.3rem;
+    }
+    
+}
+
+/* destop */
+@media (min-width: 1200px) {
+    .container li {
+        margin-right: 2.5rem;
+    }
+}
