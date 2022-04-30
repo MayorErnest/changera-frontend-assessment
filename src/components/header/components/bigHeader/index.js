@@ -40,14 +40,12 @@ const BigHeader = () => {
 						onClick={() =>
 							setshowDesktopDropDown(!showDesktopDropDown)
 						}
+						ref={ref}
 					>
 						<span className={styles.avatar}></span>
 						<span class={`${styles["dropdown-caret"]}`}></span>
 						{showDesktopDropDown ? (
-							<div
-								className={`${styles["big-dropDown"]}`}
-								ref={ref}
-							>
+							<div className={`${styles["big-dropDown"]}`}>
 								<div>Sign in as MayorErnest</div>
 								<div>Sign out</div>
 							</div>
