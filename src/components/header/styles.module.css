@@ -1,0 +1,244 @@
+/* big nav */
+.container {
+    display: none;
+    background: var(--secondary-color);
+    padding: 1rem 2%;
+}
+
+.container > div {
+    display:  flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-item-a, 
+.container-item-a ul,
+.container-item-b {
+    display: flex;
+    align-items: center;
+}
+
+.container-item-a svg {
+    fill: var(--gray-color-100);
+    height: 2rem;
+    width: 2rem;
+}
+
+.input {
+    position: relative;
+    background: var(--primary-color);
+    border: 1px solid var(--gray-color-300);
+    border-radius: 5px;
+    padding: 0.2rem 0.6rem;
+    width: 13.9rem;
+    margin: 0px 1.3rem;
+}
+
+.input input {
+    width: 90%;
+    border: none;
+    background: none;
+    outline: none;
+    color: var(--white-color);
+    font-size: 0.875rem;
+}
+
+.input input::placeholder {
+    color: var(--gray-color-100);
+}
+
+.input span {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 12%;
+    right: 5px;
+    color: var(--gray-color-200);
+    border: 1px solid var(--gray-color-300);
+    border-radius: 5px;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0.5rem;
+    font-size: .7rem;
+    overflow: hidden;
+}
+
+.container-item-a li {
+    list-style-type: none;
+    color: var(--white-color);
+    font-weight: 600;
+    white-space: nowrap;
+    margin-right: 1rem;
+    font-size: 0.875rem;
+    cursor: not-allowed;
+}
+
+.avatar{
+    display: inline-block;
+    min-width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--gray-color-200);
+    border-color: var(--gray-color-300);
+}
+
+.avatar img {
+    object-fit: cover;
+}
+
+.dropdown-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    content: "";
+    border-style: solid;
+    border-width: 0.25rem 0.25rem 0;
+    border-top-color: var(--white-color);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.container-item-b > span {
+    display: flex;
+    align-items: center;
+    margin-left: .85rem;
+}
+
+.container-item-b span span:last-of-type {
+    margin-left: 5px;
+}
+
+.container-item-b svg {
+    fill: var(--white-color);
+    cursor: not-allowed;
+}
+
+.big-dropDown-container {
+    position: relative;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.big-dropDown{
+    display: block;
+    position: absolute;
+    z-index: 30;
+    background: var(--secondary-color);
+    border: 1px solid var(--gray-color-300);
+    border-radius: 5px;
+    color: var(--gray-color-100);
+    width: 11.5625rem;
+    height: 7.5625rem;
+    top: 30px;
+    left: -160px;
+    font-size: 0.875rem;
+}
+
+.big-dropDown div {
+    padding: .6rem 1.2rem;
+}
+
+.big-dropDown div:last-of-type {
+    border-top: 1px solid var(--gray-color-300);
+    cursor: pointer;
+}
+
+.big-dropDown div:last-of-type:hover {
+    background: var(--blue-color);
+    color: var(--white-color);
+}
+
+.big-dropDown::before {
+    display: block;
+    position: absolute;
+    top: -.4rem;
+    right: .75rem;
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    border: 1px solid var(--gray-color-300);
+    border-top: none;
+    border-left: none;
+    background: var(--secondary-color);
+    transform: rotate(220deg);
+}
+
+/* small nav */ 
+.container-small {
+    padding: 1rem 0px;
+}
+
+.container-small svg {
+    fill: var(--white-color);
+} 
+
+.container-small svg:nth-of-type(2) {
+    height: 2rem;
+    width: 2rem;
+}
+
+.container-small > div:first-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-dropdown {
+    padding: 1rem 0px;
+}
+
+.input-small {
+    margin: 0px;
+    width: 100%;
+}
+
+.small-nav-links {
+    margin-top: 1rem;
+    color: var(--white-color);
+}
+
+.small-nav-links li {
+    border-top: 1px solid var(--gray-color-300);
+    padding: .5rem 0px;
+}
+
+.small-nav-links li:nth-of-type(9), 
+.small-nav-links li:nth-of-type(9) {
+    display: flex;
+    align-items: center;
+}
+
+.small-nav-links li:nth-of-type(9) span:last-of-type, 
+.small-nav-links li:nth-of-type(10)  span:last-of-type{
+    margin-left: 5px;
+}
+
+
+
+/* media queries */
+
+/* small tablet */
+@media (min-width:768px) {
+    .container {
+        display: block;
+    }
+
+    .container-small {
+        display:none;
+    }
+}
+
+/* large tablet and laptops */
+@media (min-width:940px) {
+    .input {
+        width: 16.9rem;
+    }
+
+    .container-item-a li {
+        margin-right: 1.3rem;
+    }
+    
+}
