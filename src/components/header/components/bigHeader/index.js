@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { BellIcon, GithubLogo, PlusIcon } from "../../../../assets";
+import { useOnClickOutside } from "../../../../hooks";
 
 import styles from "../../styles.module.css";
 
 const BigHeader = () => {
 	const [showDesktopDropDown, setshowDesktopDropDown] = useState(false);
+
+	const ref = useRef();
+
+	useOnClickOutside(ref, () => setshowDesktopDropDown(false));
 
 	return (
 		<header className={styles.container}>
@@ -39,7 +44,10 @@ const BigHeader = () => {
 						<span className={styles.avatar}></span>
 						<span class={`${styles["dropdown-caret"]}`}></span>
 						{showDesktopDropDown ? (
-							<div className={`${styles["big-dropDown"]}`}>
+							<div
+								className={`${styles["big-dropDown"]}`}
+								ref={ref}
+							>
 								<div>Sign in as MayorErnest</div>
 								<div>Sign out</div>
 							</div>
