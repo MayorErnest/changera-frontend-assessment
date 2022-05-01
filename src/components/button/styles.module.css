@@ -4,7 +4,7 @@
     color: var(--gray-color-100);
     font-weight: 500;
     width: auto;
-    padding: 0.45rem 0.9rem;
+    padding: 0.45rem 1.2rem;
     border:  1px solid var(--gray-color-300);
     border-radius: 6px;
     cursor: pointer;
