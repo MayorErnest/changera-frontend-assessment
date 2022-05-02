@@ -1,0 +1,40 @@
+.container {
+    position: fixed;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.container svg {
+    width: 9.375rem;
+    height: 9.375rem;
+    fill: var(--gray-color-100);
+    animation: loader .8s ease-in-out  infinite alternate;
+}
+
+@keyframes loader {
+    0% {
+        transform: scale(0.35);
+    }
+
+    25% {
+        transform: scale(0.50);
+    }
+
+    50% {
+        transform: scale(0.65);
+    }
+
+    75% {
+        transform: scale(0.85);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

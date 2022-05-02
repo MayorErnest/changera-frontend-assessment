@@ -3,3 +3,4 @@ export * from "./header";
 export * from "./button";
 export * from "./repoCard";
 export * from "./profileDetails";
+export * from "./loader";
