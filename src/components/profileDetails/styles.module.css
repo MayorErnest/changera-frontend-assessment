@@ -1,0 +1,142 @@
+/* big profile details card */
+.big-container {
+    display: none;
+    position: relative;
+    top: -2.8rem;
+    border-bottom: 1px solid var(--gray-color-300);
+}
+
+.big-avatar {
+    position: relative;
+    width: 18.5rem;
+    height: 18.5rem;
+    border: 1px solid var(--gray-color-300);
+    border-radius: 50%;
+    background: var(--gray-color-400);
+    z-index: 30;
+}
+
+.big-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 2.8rem;
+    right: -.1rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--gray-color-300);
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+.big-status svg {
+    fill: var(--gray-color-200);
+}
+
+.big-avatar img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.big-details {
+    margin-top: 1rem;
+}
+
+.big-name {
+    color: var(--gray-color-100);
+    font-size: 1.5rem;
+    line-height: 1.25;
+}
+
+.big-username {
+    color: var(--gray-color-200);
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1;
+
+}
+
+.big-description {
+    color: var(--gray-color-100);
+    margin-top: 1.3rem;
+}
+
+.big-details button {
+    width: 100%;
+    margin: 1.2rem 0rem;
+}
+
+.big-socials ul {
+    display: flex;
+    list-style-type: none;
+    color: var(--gray-color-100);
+    font-size: 0.875rem;
+}
+
+.big-socials li {
+    display: flex;
+    align-items: center;
+}
+
+.big-socials li * {
+    margin-right: .3rem;
+}
+
+.big-socials li:last-of-type::before {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 2px;
+    background: var(--gray-color-100);
+    border-radius: 50%;
+    margin-right: .3rem;
+    vertical-align: middle;
+    vertical-align: -webkit-baseline-middle;
+}
+
+.big-socials li span:first-of-type {
+    color: var(--gray-color-100);
+}
+
+.big-socials li span:last-of-type {
+    color: var(--gray-color-200);
+}
+
+.big-socials svg {
+    fill: var(--gray-color-200);
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: middle;
+}
+
+
+.big-work-details {
+    margin: 1rem 0rem;
+}
+
+.big-work-details ul {
+    list-style-type: none;
+}
+
+.big-work-details li * {
+    color: var(--gray-color-100);
+    fill: var(--gray-color-200);
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+
+.big-work-details li  span:last-of-type {
+    margin-left: .6rem;
+}
+
+/* media qeuries */
+
+/* tablets and big screens */
+@media (min-width: 768px) {
+    .big-container {
+        display: block;
+    }
+}

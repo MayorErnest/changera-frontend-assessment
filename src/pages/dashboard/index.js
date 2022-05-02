@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
 	BlockIcon,
 	BookClosedIcon,
@@ -6,7 +7,14 @@ import {
 	HolocronIcon,
 	StarIcon,
 } from "../../assets";
-import { Button, Footer, Header, RepoCard } from "../../components";
+
+import {
+	Button,
+	Footer,
+	Header,
+	RepoCard,
+	BigProfileDetails,
+} from "../../components";
 
 import styles from "./styles.module.css";
 
@@ -16,48 +24,54 @@ const Dashboard = () => {
 			<Header />
 			<main className={styles.container}>
 				<section className={`${styles["tabs-section"]}`}>
-					<div className="container">
-						<div className={`${styles["tabs-grid-item"]}`}></div>
-						<div className={`${styles["tabs-container"]}`}>
-							<ul className={`${styles.tabs}`}>
-								<li>
-									<span>
-										<BookIcon />
-									</span>
-									<span>Overview</span>
-								</li>
-								<li>
-									<span>
-										<BookClosedIcon />
-									</span>
-									<span>Respositories</span>
-									<span className={styles.count}>38</span>
-								</li>
-								<li>
-									<span>
-										<BlockIcon />
-									</span>
-									<span>Projects</span>
-								</li>
-								<li>
-									<span>
-										<HolocronIcon />
-									</span>
-									<span>Packages</span>
-								</li>
-								<li>
-									<span>
-										<StarIcon />
-									</span>
-									<span>Stars</span>
-								</li>
-							</ul>
+					<div className={styles["tabs-grid"]}>
+						<div className="container">
+							<div
+								className={`${styles["tabs-grid-item"]}`}
+							></div>
+							<div className={`${styles["tabs-container"]}`}>
+								<ul className={`${styles.tabs}`}>
+									<li>
+										<span>
+											<BookIcon />
+										</span>
+										<span>Overview</span>
+									</li>
+									<li>
+										<span>
+											<BookClosedIcon />
+										</span>
+										<span>Respositories</span>
+										<span className={styles.count}>38</span>
+									</li>
+									<li>
+										<span>
+											<BlockIcon />
+										</span>
+										<span>Projects</span>
+									</li>
+									<li>
+										<span>
+											<HolocronIcon />
+										</span>
+										<span>Packages</span>
+									</li>
+									<li>
+										<span>
+											<StarIcon />
+										</span>
+										<span>Stars</span>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</section>
 				<section className={`${styles["details-repos"]}`}>
 					<div className="container">
-						<div></div>
+						<div>
+							<BigProfileDetails />
+						</div>
 						<div className={`${styles["repo-container"]}`}>
 							<div>
 								<div className={styles.input}>

@@ -1,9 +1,16 @@
 .tabs-section {
+    position: sticky;
+    top: -30px;
     padding-top: 1.4rem;
     border-bottom: 1px solid var(--gray-color-300);
+    z-index: 20;
 }
 
-.tabs-section > div:first-of-type {
+.tabs-grid {
+    background: var(--primary-color);
+}
+
+.tabs-grid > div {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
@@ -67,11 +74,12 @@
 .details-repos > div {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    /* column-gap: 2.5rem; */
+    column-gap: 2.5rem;
 }
 
 .repo-container {
     grid-column:  1 / -1;
+    /* margin: 4rem; */
 }
 
 .repo-container > div {
@@ -171,9 +179,12 @@
         display: block;
     }
     
-    .tabs-container, 
-    .repo-container {
+    .tabs-container {
         grid-column:  4 / -1;
+    }
+
+    .repo-container {
+        grid-column:  2 / -1;
     }
 
     .tabs {
