@@ -1,0 +1,121 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0px;
+    width: 100%;
+}
+
+.container > div:first-of-type {
+    width: 80%;
+}
+
+.title {
+    color: var(--blue-color);
+    font-size: 1.1rem;   
+    cursor: pointer;
+}
+
+.title span {
+    display: inline-block;
+    border: 1px solid var(--gray-color-300);
+    border-radius: .7rem;
+    padding: .2rem .4rem;
+    font-size: 0.75rem;
+    color: var(--gray-color-200);
+    vertical-align:text-top;
+    margin-left: .3rem;
+    text-decoration: none !important;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.description {
+    color: var(--gray-color-200);
+    font-weight: 400;
+    font-size: 0.875rem;
+    margin-top: .3rem;
+    max-width: 70%;
+}
+
+.date-updated {
+    color: var(--gray-color-200);
+    font-weight: 400;
+    font-size: 0.75rem;
+    margin-top: 1.2rem;
+}
+
+.button{
+    display: inline-block;
+    background: var(--gray-color-400);
+    color: var(--gray-color-100);
+    font-weight: 500;
+    width: auto;
+    padding: 0.45rem .9rem;
+    border:  1px solid var(--gray-color-300);
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0px !important;
+    margin-left: auto;
+    text-align: right;
+}
+
+.button:hover {
+    border-color: var(--gray-color-100);
+    transition: .5s;
+}
+
+.button *{
+    fill: var(--gray-color-200);
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: middle;
+}
+
+.button:first-of-type {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.button:last-of-type {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.dropdown-caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    content: "";
+    border-style: solid;
+    border-width: 0.25rem 0.25rem 0;
+    border-top-color: var(--white-color);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+}
+
+.chart-buttons {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chart {
+    display: none;
+    margin-top: .7rem;
+}
+
+/* media queries */
+
+/* desktop and large screens */
+@media (min-width:1200px) {
+    .chart {
+        display: inline-block;
+    }
+}

@@ -8,6 +8,8 @@ import { ReactComponent as BlockIcon } from "./block.svg";
 import { ReactComponent as BookClosedIcon } from "./bookClosed.svg";
 import { ReactComponent as HolocronIcon } from "./holocron.svg";
 import { ReactComponent as StarIcon } from "./star.svg";
+import { ReactComponent as Chart1 } from "./chart1.svg";
+import { ReactComponent as Chart2 } from "./chart2.svg";
 
 export {
 	GithubLogo,
@@ -20,4 +22,6 @@ export {
 	BookClosedIcon,
 	HolocronIcon,
 	StarIcon,
+	Chart1,
+	Chart2,
 };

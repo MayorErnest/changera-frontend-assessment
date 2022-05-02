@@ -200,6 +200,10 @@
     color: var(--white-color);
 }
 
+.small-nav-links ul {
+    list-style-type: none;
+}
+
 .small-nav-links li {
     border-top: 1px solid var(--gray-color-300);
     padding: .5rem 0px;

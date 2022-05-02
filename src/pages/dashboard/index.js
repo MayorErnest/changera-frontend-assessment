@@ -6,7 +6,7 @@ import {
 	HolocronIcon,
 	StarIcon,
 } from "../../assets";
-import { Button, Footer, Header } from "../../components";
+import { Button, Footer, Header, RepoCard } from "../../components";
 
 import styles from "./styles.module.css";
 
@@ -58,7 +58,7 @@ const Dashboard = () => {
 				<section className={`${styles["details-repos"]}`}>
 					<div className="container">
 						<div></div>
-						<div className={`${styles["filter-container"]}`}>
+						<div className={`${styles["repo-container"]}`}>
 							<div>
 								<div className={styles.input}>
 									<input placeholder="Find a repository..." />
@@ -90,6 +90,25 @@ const Dashboard = () => {
 									<BookClosedIcon />
 									<span>New</span>
 								</Button>
+							</div>
+							<div className={`${styles["repo-list"]}`}>
+								<ul>
+									{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map(
+										(item, index) => (
+											<li key={item + index}>
+												<RepoCard
+													title={
+														"The Chosen One No Cap About that!!!"
+													}
+													description={
+														"The Joker task that you should know about!!"
+													}
+													isEven={index % 2 === 0}
+												/>
+											</li>
+										)
+									)}
+								</ul>
 							</div>
 						</div>
 					</div>
