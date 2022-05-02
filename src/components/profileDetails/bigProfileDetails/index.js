@@ -6,7 +6,7 @@ import styles from "../styles.module.css";
 
 const BigProfileDetails = () => {
 	return (
-		<div className={styles["big-container"]}>
+		<div className={`${styles["big-container"]}`}>
 			<div className={styles["big-avatar"]}>
 				<span className={styles["big-status"]}>
 					<Emoji />

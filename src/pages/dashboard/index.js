@@ -14,6 +14,7 @@ import {
 	Header,
 	RepoCard,
 	BigProfileDetails,
+	SmallProfileDetails,
 } from "../../components";
 
 import styles from "./styles.module.css";
@@ -23,6 +24,7 @@ const Dashboard = () => {
 		<>
 			<Header />
 			<main className={styles.container}>
+				<SmallProfileDetails />
 				<section className={`${styles["tabs-section"]}`}>
 					<div className={styles["tabs-grid"]}>
 						<div className="container">
