@@ -26,12 +26,10 @@ export default authSlice.reducer;
 // Actions
 const { loginSuccess, logoutSuccess } = authSlice.actions;
 export const login = (userName) => async (dispatch) => {
-	console.log("Hello");
 	axios
 		.get(`${process.env.REACT_APP_GITHUB_BASE_USER_URL}/${userName}`)
 		.then((data) => {
 			dispatch(loginSuccess(data.data));
-			console.log(data.data);
 			window.location.replace("/dashboard");
 		})
 		.catch((error) => console.log(error));
