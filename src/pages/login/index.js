@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { GithubLogo } from "../../assets/svgs";
 import { Button } from "../../components";
-import { login, logout } from "../../store/slices";
+import { login } from "../../store/slices";
 import { supabase } from "../../supaBaseClient";
 // import { supabase } from "../../supaBaseClient";
 
@@ -13,57 +13,38 @@ import styles from "./styles.module.css";
 // import { supabase } from "./client";
 
 const Login = () => {
-	// const [user, setUser] = useState(null);
-
 	const dispatch = useDispatch();
 
-	const { user } = useSelector((state) => state.authSlice);
-
-	// useEffect(() => {
-	// 	const user = supabase.auth.user();
-	// 	dispatch(login(user));
-	// 	window.addEventListener("hashchange", function () {
-	// 		const user = supabase.auth.user();
-	// 		dispatch(login(user));
-	// 	});
-	// }, [dispatch]);
-
-	// async function checkUser() {
-	// 	const user = supabase.auth.user();
-	// 	dispatch(login(user));
-	// }
-	// async function signInWithGithub() {
-	// 	console.log("Hello");
-	// 	dispatch(login());
-	// }
-	// async function signOut() {
-	// 	dispatch(logout());
-	// }
+	const { user: myUser } = useSelector((state) => state.authSlice);
 
 	const navigate = useNavigate();
 
-	// useEffect(() => {
-	// 	checkUser();
-	// 	window.addEventListener("hashchange", function () {
-	// 		checkUser();
-	// 	});
-	// }, []);
-
-	async function checkUser() {
+	const checkUser = useCallback(async () => {
 		const user = supabase.auth.user();
-	}
+		dispatch(login(user?.user_metadata?.user_name));
+	}, [dispatch]);
+
 	async function signInWithGithub() {
-		dispatch(login());
+		await supabase.auth.signIn({
+			provider: "github",
+		});
 	}
+
+	// effect login
+	useEffect(() => {
+		checkUser();
+		window.addEventListener("hashchange", function () {
+			checkUser();
+		});
+	}, [checkUser]);
 
 	// protect route
 	useEffect(() => {
-		if (user) {
+		if (myUser) {
 			navigate("/dashboard");
 		}
-	}, [user, navigate]);
+	}, [myUser, navigate]);
 
-	console.log(user);
 	return (
 		<main className={styles.container}>
 			<div className={styles.box}>

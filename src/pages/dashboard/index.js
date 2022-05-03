@@ -52,8 +52,8 @@ const Dashboard = () => {
 	}, [navigate, user]);
 
 	useEffect(() => {
-		dispatch(fetchRepo("unicodeveloper", sortParameter));
-	}, [dispatch, sortParameter]);
+		dispatch(fetchRepo(user?.login, sortParameter));
+	}, [dispatch, sortParameter, user]);
 
 	if (repo === null) {
 		return <Loader />;

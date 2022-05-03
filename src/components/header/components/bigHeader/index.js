@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BellIcon, GithubLogo, PlusIcon } from "../../../../assets";
 import { useOnClickOutside } from "../../../../hooks";
 import { logout } from "../../../../store/slices";
+import { supabase } from "../../../../supaBaseClient";
 
 import styles from "../../styles.module.css";
 
@@ -18,7 +19,7 @@ const BigHeader = () => {
 	useOnClickOutside(ref, () => setshowDesktopDropDown(false));
 
 	async function signOut() {
-		dispatch(logout());
+		await supabase.auth.signOut().then(() => dispatch(logout()));
 	}
 
 	return (

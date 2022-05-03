@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { supabase } from "../../../supaBaseClient";
+// import { supabase } from "../../../supaBaseClient";
 
 // import { supabase } from "../../supaBaseClient";
 
@@ -25,33 +25,18 @@ export default authSlice.reducer;
 
 // Actions
 const { loginSuccess, logoutSuccess } = authSlice.actions;
-export const login = () => async (dispatch) => {
+export const login = (userName) => async (dispatch) => {
+	console.log("Hello");
 	axios
-		.get(`https://api.github.com/users/${"unicodeveloper"}`)
+		.get(`https://api.github.com/users/${userName}`)
 		.then((data) => {
 			dispatch(loginSuccess(data.data));
 			console.log(data.data);
 			window.location.replace("/dashboard");
 		})
 		.catch((error) => console.log(error));
-	// await supabase.auth
-	// 	.signIn({
-	// 		provider: "github",
-	// 	})
-	// 	.then((data) => {
-	// 		console.log(data, "please");
-	// 		dispatch(loginSuccess(data));
-	// 		// window.location.replace("/dashboard");
-	// 	})
-	// 	.catch((error) => console.log(error));
 };
 export const logout = () => async (dispatch) => {
-	await supabase.auth
-		.signOut()
-		.then(() => {
-			dispatch(logoutSuccess());
-			window.location.replace("/");
-			console.log(supabase.auth);
-		})
-		.catch((error) => console.log(error));
+	dispatch(logoutSuccess());
+	window.location.replace("/");
 };

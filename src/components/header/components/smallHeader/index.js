@@ -7,6 +7,7 @@ import {
 	SignOutIcon,
 } from "../../../../assets";
 import { logout } from "../../../../store/slices";
+import { supabase } from "../../../../supaBaseClient";
 
 import styles from "../../styles.module.css";
 
@@ -18,7 +19,7 @@ const SmallHeader = () => {
 	const { user } = useSelector((state) => state.authSlice);
 
 	async function signOut() {
-		dispatch(logout());
+		await supabase.auth.signOut().then(() => dispatch(logout()));
 	}
 
 	return (
