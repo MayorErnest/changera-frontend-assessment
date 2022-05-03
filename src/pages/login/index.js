@@ -1,9 +1,9 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { GithubLogo } from "../../assets/svgs";
-import { Button } from "../../components";
+import { Button, Loader } from "../../components";
 import { login } from "../../store/slices";
 import { supabase } from "../../supaBaseClient";
 // import { supabase } from "../../supaBaseClient";
@@ -13,6 +13,8 @@ import styles from "./styles.module.css";
 // import { supabase } from "./client";
 
 const Login = () => {
+	const [loading, setloading] = useState(false);
+
 	const dispatch = useDispatch();
 
 	const { user: myUser } = useSelector((state) => state.authSlice);
@@ -20,8 +22,15 @@ const Login = () => {
 	const navigate = useNavigate();
 
 	const checkUser = useCallback(async () => {
-		const user = supabase.auth.user();
-		dispatch(login(user?.user_metadata?.user_name));
+		setloading(true);
+
+		// simulate API load time to show loader
+		const timer = setTimeout(() => {
+			const user = supabase.auth.user();
+			dispatch(login(user?.user_metadata?.user_name));
+			setloading(false);
+		}, 2500);
+		return () => clearTimeout(timer);
 	}, [dispatch]);
 
 	async function signInWithGithub() {
@@ -44,6 +53,10 @@ const Login = () => {
 			navigate("/dashboard");
 		}
 	}, [myUser, navigate]);
+
+	if (loading) {
+		return <Loader />;
+	}
 
 	return (
 		<main className={styles.container}>
