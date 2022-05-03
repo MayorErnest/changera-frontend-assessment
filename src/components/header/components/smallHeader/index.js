@@ -1,15 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
 	BellIcon,
 	GithubLogo,
 	HamburgerIcon,
 	SignOutIcon,
 } from "../../../../assets";
+import { logout } from "../../../../store/slices";
 
 import styles from "../../styles.module.css";
 
 const SmallHeader = () => {
 	const [showMobileDropDown, setshowMobileDropDown] = useState(false);
+
+	const dispatch = useDispatch();
+
+	const { user } = useSelector((state) => state.authSlice);
+
+	async function signOut() {
+		dispatch(logout());
+	}
 
 	return (
 		<header className={`${styles["container-small"]}`}>
@@ -37,10 +47,13 @@ const SmallHeader = () => {
 							<li>Sponspors</li>
 							<li>Settings</li>
 							<li>
-								<span className={styles.avatar}></span>
-								<span>MayorErnest</span>
+								<span className={styles.avatar}>
+									{" "}
+									<img src={user?.avatar_url} alt="avatar" />
+								</span>
+								<span>{user?.name}</span>
 							</li>
-							<li>
+							<li onClick={signOut}>
 								<span>
 									<SignOutIcon />
 								</span>

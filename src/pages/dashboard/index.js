@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDate } from "../../utils";
 
 import {
 	BlockIcon,
 	BookClosedIcon,
 	BookIcon,
+	CancelIcon,
 	HolocronIcon,
 	StarIcon,
+	TickIcon,
 } from "../../assets";
 
 import {
@@ -15,11 +19,46 @@ import {
 	RepoCard,
 	BigProfileDetails,
 	SmallProfileDetails,
+	Loader,
 } from "../../components";
 
+import { fetchRepo } from "../../store/slices";
+
 import styles from "./styles.module.css";
+import { useOnClickOutside } from "../../hooks";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+	const [showSortDropDown, setshowSortDropDown] = useState(false);
+	const [sortParameter, setsortParameter] = useState("created");
+
+	const dropDownRef = useRef();
+
+	useOnClickOutside(dropDownRef, () => setshowSortDropDown(false));
+
+	const dispatch = useDispatch();
+
+	const { repo } = useSelector((state) => state.repoSlice);
+
+	const { user } = useSelector((state) => state.authSlice);
+
+	const navigate = useNavigate();
+
+	// protect route
+	useEffect(() => {
+		if (!user) {
+			navigate("/");
+		}
+	}, [navigate, user]);
+
+	useEffect(() => {
+		dispatch(fetchRepo("unicodeveloper", sortParameter));
+	}, [dispatch, sortParameter]);
+
+	if (repo === null) {
+		return <Loader />;
+	}
+
 	return (
 		<>
 			<Header />
@@ -44,7 +83,13 @@ const Dashboard = () => {
 											<BookClosedIcon />
 										</span>
 										<span>Respositories</span>
-										<span className={styles.count}>38</span>
+										{repo?.length ? (
+											<span className={styles.count}>
+												{repo?.length}
+											</span>
+										) : (
+											""
+										)}
 									</li>
 									<li>
 										<span>
@@ -83,20 +128,89 @@ const Dashboard = () => {
 									<Button>
 										<span>Type</span>
 										<span
-											class={`${styles["dropdown-caret"]}`}
+											className={`${styles["dropdown-caret"]}`}
 										></span>
 									</Button>
 									<Button>
 										<span>Language</span>
 										<span
-											class={`${styles["dropdown-caret"]}`}
+											className={`${styles["dropdown-caret"]}`}
 										></span>
 									</Button>
-									<Button>
+									<Button
+										className={`${styles["sort-button"]}`}
+										onClick={() =>
+											setshowSortDropDown(
+												!showSortDropDown
+											)
+										}
+										ref={dropDownRef}
+									>
 										<span>Sort</span>
 										<span
-											class={`${styles["dropdown-caret"]}`}
+											className={`${styles["dropdown-caret"]}`}
 										></span>
+										{showSortDropDown ? (
+											<div
+												className={`${styles["sort-dropDown"]}`}
+											>
+												<div>
+													Select Order
+													<span>
+														<CancelIcon />
+													</span>
+												</div>
+												<ul>
+													<li
+														onClick={() =>
+															setsortParameter(
+																"created"
+															)
+														}
+													>
+														{sortParameter ===
+														"created" ? (
+															<TickIcon />
+														) : (
+															""
+														)}
+														Created
+													</li>
+													<li
+														onClick={() =>
+															setsortParameter(
+																"updated"
+															)
+														}
+													>
+														{sortParameter ===
+														"updated" ? (
+															<TickIcon />
+														) : (
+															""
+														)}
+														Updated
+													</li>
+													<li
+														onClick={() =>
+															setsortParameter(
+																"full_name"
+															)
+														}
+													>
+														{sortParameter ===
+														"full_name" ? (
+															<TickIcon />
+														) : (
+															""
+														)}
+														Name
+													</li>
+												</ul>
+											</div>
+										) : (
+											""
+										)}
 									</Button>
 								</div>
 								<Button
@@ -109,16 +223,18 @@ const Dashboard = () => {
 							</div>
 							<div className={`${styles["repo-list"]}`}>
 								<ul>
-									{[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map(
-										(item, index) => (
-											<li key={item + index}>
+									{repo?.map(
+										(
+											{ name, description, updated_at },
+											index
+										) => (
+											<li key={name + index}>
 												<RepoCard
-													title={
-														"The Chosen One No Cap About that!!!"
-													}
-													description={
-														"The Joker task that you should know about!!"
-													}
+													title={name}
+													description={description}
+													dateUpdated={getDate(
+														updated_at
+													)}
 													isEven={index % 2 === 0}
 												/>
 											</li>

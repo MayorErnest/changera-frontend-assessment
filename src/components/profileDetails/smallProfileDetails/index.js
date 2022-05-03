@@ -1,17 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Emoji, GroupIcon } from "../../../assets";
 import { Button } from "../../button";
 
 import styles from "../styles.module.css";
 
 const SmallProfileDetails = () => {
+	const { user } = useSelector((state) => state.authSlice);
+
 	return (
 		<div className={`${styles["small-container"]}`}>
 			<div className={styles["small-avatar-name-container"]}>
-				<div className={styles["small-avatar"]}></div>
+				<div className={styles["small-avatar"]}>
+					<img src={user?.avatar_url} alt="avatar" />
+				</div>
 				<div className={styles["small-name-container"]}>
-					<h1 className={styles["small-name"]}>Obumma Ernest</h1>
-					<h2 className={styles["small-username"]}>MayorErnest</h2>
+					<h1 className={styles["small-name"]}>{user?.name}</h1>
+					<h2 className={styles["small-username"]}>{user?.login}</h2>
 				</div>
 			</div>
 			<div className={styles["small-input"]}>
@@ -21,9 +26,7 @@ const SmallProfileDetails = () => {
 				<input placeholder="Set status" />
 			</div>
 			<div className={styles["small-details"]}>
-				<p className={styles["small-description"]}>
-					Software Developer.
-				</p>
+				<p className={styles["small-description"]}>{user?.bio}</p>
 				<Button>Edit Profile</Button>
 			</div>
 			<div className={styles["small-more-details"]}>
@@ -31,11 +34,11 @@ const SmallProfileDetails = () => {
 					<ul>
 						<li>
 							<GroupIcon />
-							<span>5</span>
+							<span>{user?.followers}</span>
 							<span>Followers</span>
 						</li>
 						<li>
-							<span>5</span>
+							<span>{user?.following}</span>
 							<span>Following</span>
 						</li>
 					</ul>

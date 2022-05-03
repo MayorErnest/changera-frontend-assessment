@@ -14,6 +14,8 @@ import { ReactComponent as Emoji } from "./emoji.svg";
 import { ReactComponent as LocationIcon } from "./location.svg";
 import { ReactComponent as GroupIcon } from "./group.svg";
 import { ReactComponent as WorkIcon } from "./work.svg";
+import { ReactComponent as CancelIcon } from "./cancel.svg";
+import { ReactComponent as TickIcon } from "./tick.svg";
 
 export {
 	GithubLogo,
@@ -32,4 +34,6 @@ export {
 	LocationIcon,
 	GroupIcon,
 	WorkIcon,
+	CancelIcon,
+	TickIcon,
 };

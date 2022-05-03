@@ -22,7 +22,7 @@ const RepoCard = ({ title, description, dateUpdated, isEven }) => {
 						Star
 					</button>
 					<button className={`${styles.button}`}>
-						<span class={`${styles["dropdown-caret"]}`}></span>
+						<span className={`${styles["dropdown-caret"]}`}></span>
 					</button>
 				</div>
 				<div className={styles.chart}>

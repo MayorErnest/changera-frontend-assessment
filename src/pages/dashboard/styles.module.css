@@ -74,7 +74,6 @@
 .details-repos > div {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    column-gap: 2.5rem;
 }
 
 .repo-container {
@@ -98,6 +97,10 @@
     order: 1;
 }
 
+.filter-buttons button:not(:last-of-type) {
+    cursor: not-allowed;
+}
+
 .repo-container button svg {
     margin-right: .2rem;
 }
@@ -109,6 +112,58 @@
 
 .repo-container button:not(:last-of-type) {
     margin-right: .3rem;
+}
+
+.sort-button {
+    position: relative;
+}
+
+.sort-dropDown {
+    position: absolute;
+    z-index: 30;
+    background: var(--secondary-color);
+    border: 1px solid var(--gray-color-300);
+    border-radius: 5px;
+    color: var(--gray-color-100);
+    width: 18.5625rem;
+    top: 38px;
+    right: -3px;
+    font-size: 0.75rem;
+}
+
+.sort-dropDown > div {
+    position: relative;
+    padding: .6rem 1rem;
+    text-align: left;
+    font-weight: 600;
+}
+
+.sort-dropDown > div span {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+}
+
+.sort-dropDown ul {
+    list-style-type: none;
+}
+
+.sort-dropDown li {
+    position: relative;
+    border-top: 1px solid var(--gray-color-300);
+    padding: .6rem 2.2rem;
+    text-align: left;
+}
+
+.sort-dropDown li svg {
+    position: absolute;
+    left: .9rem;
+    margin-right: .4rem;
+    vertical-align: text-top;
+}
+
+.sort-dropDown li:hover {
+    background: var(--gray-color-400);
 }
 
 .new-button {
@@ -219,10 +274,6 @@
     .tabs li:nth-of-type(4), 
     .tabs li:nth-of-type(5) {
         display: block;
-    }
-
-    .details-repos > div {
-        column-gap: 2.5rem;
     }
 
     .input {
