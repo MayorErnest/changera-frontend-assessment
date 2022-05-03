@@ -82,6 +82,9 @@
 .button:last-of-type {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    position: relative;
+    top: 0.06rem;
+    padding-top: 0.52rem;
 }
 
 .dropdown-caret {
